@@ -1,0 +1,719 @@
+@pink-bg: #eba8b1; //
+@light-pink-bg: #ffefef;
+@dark-pink-bg: #c0707c;
+@white-text: #fff;
+@dark-text: #331907FF;
+@benefits-bg: #821328;
+@product-border:2px solid white;
+@buttons-bg: -webkit-linear-gradient(90deg, rgb(113, 8, 30) 0%, rgb(215, 72, 92) 100%);
+.block-container() {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-error() {
+  font-family: GilroyBold, sans-serif;
+  color: red;
+  margin-bottom: 15px;
+  font-size: 12px;
+  display: none;
+  margin-left: 20px;
+  position: absolute;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: GilroyRegular;
+  src: url("../fonts/Gilroy-Regular.ttf");
+}
+
+@font-face {
+  font-family: GilroyMedium;
+  src: url("../fonts/Gilroy-Medium.ttf");
+}
+
+@font-face {
+  font-family: GilroyBold;
+  src: url("../fonts/Gilroy-Bold.ttf");
+}
+
+@font-face {
+  font-family: GilroyExtraBold;
+  src: url("../fonts/Gilroy-ExtraBold.ttf");
+}
+
+@font-face {
+  font-family: Tavolga;
+  src: url("../fonts/TavolgaFree.ttf");
+}
+
+@font-face {
+  font-family: MyriadPro;
+  src: url("../fonts/MyriadProRegular.ttf");
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.main {
+  background: @pink-bg;
+  overflow: hidden;
+
+  .header {
+    padding: 38px 0 30px 0; /*25px с hover*/
+
+    .container {
+      .block-container();
+
+      .close {
+        display: none;
+      }
+
+      .burger {
+        display: none;
+      }
+
+      .menu {
+        ul {
+          font-family: GilroyMedium, sans-serif;
+          list-style: none;
+          display: flex;
+
+          .menu-item {
+            display: inline-block;
+            margin-right: 40px;
+
+            a {
+              color: #770b1d;
+              text-decoration: none;
+              /*border-bottom: 2px solid transparent;*/
+              transition: all .1s;
+              letter-spacing: 0.04em;
+
+              &:hover {
+                border-bottom: 2px solid #770b1d;
+              }
+            }
+          }
+        }
+      }
+
+      .number {
+        span {
+          font-size: 16px;
+          font-family: GilroyBold, sans-serif;
+          color: @white-text;
+        }
+      }
+    }
+  }
+}
+
+.main-info {
+  padding: 128px 0 108px 0;
+
+  .container {
+    .block-container;
+
+    .main-info-content {
+      max-width: 585px;
+
+      .main-info-title {
+        h1 {
+          font-size: 55px;
+          font-family: Tavolga, sans-serif;
+          color: @white-text;
+          margin-bottom: 59px;
+          font-weight: normal;
+        }
+      }
+
+      .main-info-text {
+        font-size: 18px;
+        font-family: Tavolga, sans-serif;
+        color: @white-text;
+        line-height: 25px;
+        width: 390px;
+        margin: 30px 0 40px 0;
+      }
+    }
+
+    .main-info-image {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 528px;
+      z-index: 1;
+
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+
+// когда через & перемещаю их в main-info-image, все ломается
+.main-info-image::before {
+  content: '';
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 1px solid #770b1d;
+  position: absolute;
+  z-index: -2;
+  animation: pulse1 3s infinite;
+  @keyframes pulse1 {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    100% {
+      transform: scale(3);
+      opacity: 0;
+    }
+  }
+}
+
+.main-info-image::after {
+  content: '';
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 1px solid #770b1d;
+  position: absolute;
+  z-index: -2;
+  animation: pulse2 3s 0.5s infinite;
+  @keyframes pulse2 {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    100% {
+      transform: scale(3);
+      opacity: 0;
+    }
+  }
+}
+
+
+.button {
+  //background-image: -moz-linear-gradient(90deg, rgb(113, 8, 30) 0%, rgb(215, 72, 92) 100%);
+  background:@buttons-bg;
+  //background-image: -ms-linear-gradient(90deg, rgb(113, 8, 30) 0%, rgb(215, 72, 92) 100%);
+  font-family: GilroyBold, sans-serif;
+  color: @white-text;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  transition: .5s;
+
+  &:hover {
+    box-shadow: 0 5px 9px 1px rgba(130, 19, 40, 0.5);
+    transition: .5s;
+  }
+}
+
+.button.main-button {
+  font-size: 18px;
+  margin-top: 40px;
+  width: 240px;
+  height: 60px;
+  border-radius: 30px;
+  border: none;
+  transition: .5s;
+  letter-spacing: 0.02em;
+}
+
+
+.benefits {
+  background-color: @light-pink-bg;
+  padding: 119px 0 120px 0;
+  position: relative;
+
+  .benefits-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 4fr;
+    margin-bottom: 80px;
+    align-items: flex-end;
+  }
+
+  .benefits-title {
+    font-size: 45px;
+    font-family: Tavolga, sans-serif;
+    color: @dark-text;
+    max-width: 475px;
+    margin-bottom: 60px;
+    line-height: 1.222;
+  }
+
+  .benefits-text {
+    font-size: 18px;
+    font-family: GilroyRegular, sans-serif;
+    color: @dark-text;
+    max-width: 400px;
+    line-height: 1.556;
+  }
+
+  .benefits-image {
+    text-align: right;
+  }
+
+  .benefits-footer {
+    display: grid;
+    grid-template-columns: repeat(4, 220px);
+    justify-content: space-between;
+    grid-column-gap: 20px;
+  }
+
+  .benefits-item-number {
+    background: @benefits-bg;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    position: relative;
+    margin-bottom: 21px;
+    transition: .2s;
+
+    span {
+      position: absolute;
+      font-size: 60px;
+      font-family: GilroyExtraBold, sans-serif;
+      color: @white-text;
+      left: 18px;
+      bottom: -17px;
+    }
+  }
+
+  .benefits-item {
+    .benefits-item-title {
+      font-size: 20px;
+      font-family: GilroyExtraBold, sans-serif;
+      color: @dark-text;
+      margin-bottom: 20px;
+    }
+
+    .benefits-item-text {
+      font-size: 15px;
+      font-family: GilroyMedium, sans-serif;
+      color: @dark-text;
+      line-height: 1.333;
+    }
+
+    &:hover .benefits-item-number {
+      background: @pink-bg;
+      transition: .2s;
+    }
+
+    &:hover .benefits-item-number span {
+      color: @benefits-bg;
+      transition: .2s;
+    }
+  }
+}
+
+
+.choice {
+  padding: 120px 0 120px 0;
+  background: @pink-bg;
+
+  .choice-title {
+    h2 {
+      font-size: 45px;
+      font-weight: normal;
+      font-family: Tavolga, sans-serif;
+      color: rgb(255, 255, 255);
+      text-align: center;
+      margin-bottom: 143px;
+
+    }
+
+  }
+
+  .products {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 29px;
+
+    .product {
+      padding: 109px 21px 27px 21px;
+      border: @product-border;
+      border-radius: 20px;
+      width: 263px;
+      box-sizing: border-box;
+      text-align: center;
+      position: relative;
+
+      .product-image {
+        position: absolute;
+        top: -63px;
+        left: 35px;
+
+        img {
+          height: 120px;
+          transition: .5s;
+        }
+      }
+
+      &:hover img {
+        transform: scale(1.1);
+      }
+
+      .product-title {
+        font-size: 18px;
+        font-family: Tavolga, sans-serif;
+        color: rgb(255, 255, 255);
+        text-align: center;
+        margin-bottom: 26px;
+        display: inline-block;
+        line-height: 5px;
+      }
+
+      .product-footer {
+        /* margin-top: 26px;*/
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .amount, .price {
+          font-size: 15px;
+          font-family: GilroyRegular, sans-serif;
+          color: rgb(255, 255, 255);
+          text-align: left;
+        }
+      }
+
+      // тут не разобралась
+      .amount, .price:not(:last-child) {
+        margin-bottom: 13px;
+      }
+
+      // не разобралась как такие стили двойные размещать
+      .button.button-footer {
+        background: @buttons-bg;
+        font-size: 16px;
+        /*padding: 19px 0;*/
+        width: 130px;
+        height: 50px;
+        border-radius: 25px;
+        border: none;
+        box-sizing: border-box;
+        letter-spacing: .02em;
+      }
+    }
+  }
+}
+
+
+.order {
+  padding: 98px 0 120px 0;
+  position: relative;
+  background: @light-pink-bg;
+
+  .container {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    .order-image {
+      margin-left: 20px;
+      margin-right: 162px;
+      margin-top: 75px;
+    }
+  }
+
+  .order-form {
+    .order-title {
+      h2 {
+        font-size: 45px;
+        font-family: Tavolga, sans-serif;
+        color: @dark-text;
+        margin-bottom: 41px;
+        font-weight: normal;
+      }
+
+      .order-text {
+        width: 403px;
+        margin-bottom: 48px;
+
+        span {
+          font-size: 18px;
+          font-family: GilroyRegular, sans-serif;
+          color: @dark-text;
+          line-height: 28px;
+        }
+      }
+    }
+  }
+
+  h6 {
+    font-size: 18px;
+    font-family: GilroyBold, sans-serif;
+    color: @dark-text;
+    margin-bottom: 20px;
+  }
+
+  .form-choice {
+    margin-bottom: 25px;
+    position: relative;
+  }
+
+  .input {
+    font-size: 15px;
+    font-family: GilroyBold, sans-serif;
+    display: block;
+    border: 1px solid @benefits-bg;
+    background: transparent;
+    border-radius: 30px;
+    width: 293px;
+    padding: 22px 26px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    outline: none;
+
+    &::placeholder {
+      color: rgb(118, 12, 34);
+    }
+  }
+
+  .button.order-button {
+    width: 294px;
+    border-radius: 30px;
+    padding: 22px 0 21px 0;
+    letter-spacing: .02em;
+    font-size: 18px;
+    font-family: GilroyBold, sans-serif;
+  }
+
+  .strawberry {
+    .left {
+      position: absolute;
+      top: 40px;
+      left: -5px;
+      animation: strawberry 3s linear infinite;
+    }
+
+    .right {
+      position: absolute;
+      bottom: 94px;
+      right: 144px;
+      animation: strawberry 3s .5s linear infinite;
+    }
+  }
+}
+
+@keyframes strawberry {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+
+}
+
+.footer {
+  padding: 73px 0 62px 0;
+  background: @dark-pink-bg;
+  position: relative;
+
+  .container {
+    .footer-content {
+      display: grid;
+      grid-template-columns: 157px 4fr 148px;
+      align-items: center;
+
+      .footer-socials {
+        font-size: 16px;
+        font-family: GilroyBold, sans-serif;
+        color: rgb(255, 255, 255);
+        text-align: center;
+
+        .link {
+          a {
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 15px;
+          }
+        }
+
+        svg {
+          fill: white;
+        }
+      }
+
+      .phone {
+        margin: auto;
+
+        span {
+          font-size: 16px;
+          font-family: GilroyBold, sans-serif;
+          color: rgb(255, 255, 255);
+        }
+      }
+
+      .footer-text {
+        font-size: 12px;
+        font-family: GilroyRegular, sans-serif;
+        color: rgb(227, 172, 180);
+        position: relative;
+        bottom: 21px;
+      }
+    }
+  }
+}
+
+.dialog {
+  position: relative;
+
+  .present {
+    background: radial-gradient(#71081e, #d7485c);
+    border-radius: 50%;
+    position: absolute;
+    right: 40px;
+    bottom: 40px;
+    padding: 20px 18px 18px 19px;
+    z-index: 99;
+    transition: all .5s;
+  }
+}
+
+
+.present {
+  .present-dialog {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all .5s;
+    position: absolute;
+    right: 114px;
+    top: 14px;
+    border: 2px solid #770A1DFF;
+    border-radius: 10px;
+    background: #feefee;
+    width: 160px;
+    padding: 9px 12px;
+    box-sizing: border-box;
+
+    span {
+      font-family: MyriadPro, sans-serif;
+      font-size: 15px;
+      color: #770a1d;
+      line-height: 1.333;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      right: -24px;
+      border: 11px solid transparent;
+      top: 21px;
+      border-left: 12px solid #770a1d;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: -20px;
+      border: 9px solid transparent;
+      top: 23px;
+      border-left: 11px solid #feefee;
+    }
+  }
+
+  &:hover .present-dialog {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+.loader {
+  position: fixed;
+  display: none;
+  background: rgba(0, 0, 0, 0.6);
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+
+  .loader-image {
+    img {
+      height: 70px;
+      animation: ball 1.5s infinite ease;
+      opacity: 1;
+    }
+
+    @keyframes ball {
+      0% {
+        transform: scaleX(1.4) translateY(0px);
+      }
+
+      40% {
+
+        transform: scaleX(1.1) translateY(-200px);
+      }
+
+      100% {
+        transform: scaleX(1.4) translateY(0px);
+      }
+    }
+
+  }
+
+}
+
+.error-input {
+  .form-error (); //
+  top: 108px;
+}
+
+.error-name-input {
+  .form-error();
+  bottom: 130px;
+}
+
+.error-phone-input {
+  .form-error();
+  bottom: 50px;
+}
+
+.order-after {
+  padding: 20px;
+  background: @dark-pink-bg;
+  max-width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  display: none;
+  transition: 1s;
+  font-family: Tavolga, sans-serif;
+  font-size: 30px;
+  color: rgb(255, 255, 255);
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+// если переношу, ломается
+.order-after p:not(:last-child) {
+  margin-bottom: 40px;
+}
+
+@import "adaptive";
+@import "theme";
