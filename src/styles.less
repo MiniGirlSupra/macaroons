@@ -155,52 +155,48 @@
       img {
         max-width: 100%;
       }
-    }
-  }
-}
+      &::before {
+        content: '';
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 1px solid #770b1d;
+        position: absolute;
+        z-index: -2;
+        animation: pulse1 3s infinite;
+        @keyframes pulse1 {
+          0% {
+            transform: scale(1);
+            opacity: 1;
+          }
 
+          100% {
+            transform: scale(3);
+            opacity: 0;
+          }
+        }
+      }
+      &::after {
+        content: '';
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 1px solid #770b1d;
+        position: absolute;
+        z-index: -2;
+        animation: pulse2 3s 0.5s infinite;
+        @keyframes pulse2 {
+          0% {
+            transform: scale(1);
+            opacity: 1;
+          }
 
-// когда через & перемещаю их в main-info-image, все ломается
-.main-info-image::before {
-  content: '';
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  border: 1px solid #770b1d;
-  position: absolute;
-  z-index: -2;
-  animation: pulse1 3s infinite;
-  @keyframes pulse1 {
-    0% {
-      transform: scale(1);
-      opacity: 1;
-    }
-
-    100% {
-      transform: scale(3);
-      opacity: 0;
-    }
-  }
-}
-
-.main-info-image::after {
-  content: '';
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  border: 1px solid #770b1d;
-  position: absolute;
-  z-index: -2;
-  animation: pulse2 3s 0.5s infinite;
-  @keyframes pulse2 {
-    0% {
-      transform: scale(1);
-      opacity: 1;
-    }
-
-    100% {
-      transform: scale(3);
-      opacity: 0;
+          100% {
+            transform: scale(3);
+            opacity: 0;
+          }
+        }
+      }
     }
   }
 }
@@ -221,19 +217,18 @@
     box-shadow: 0 5px 9px 1px rgba(130, 19, 40, 0.5);
     transition: .5s;
   }
-}
 
-.button.main-button {
-  font-size: 18px;
-  margin-top: 40px;
-  width: 240px;
-  height: 60px;
-  border-radius: 30px;
-  border: none;
-  transition: .5s;
-  letter-spacing: 0.02em;
+  &.main-button {
+    font-size: 18px;
+    margin-top: 40px;
+    width: 240px;
+    height: 60px;
+    border-radius: 30px;
+    border: none;
+    transition: .5s;
+    letter-spacing: 0.02em;
+  }
 }
-
 
 .benefits {
   background-color: @light-pink-bg;
@@ -680,7 +675,7 @@
 }
 
 .error-input {
-  .form-error (); //
+  .form-error ();
   top: 108px;
 }
 

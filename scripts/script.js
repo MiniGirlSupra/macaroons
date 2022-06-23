@@ -27,6 +27,9 @@ $(document).ready(() => {
         $('#menu').hide();
     })
 
+    $('.close *').click(function () {
+        $('#menu').hide();
+    })
 
 
 // валидация полей
@@ -40,6 +43,8 @@ $(document).ready(() => {
 
         input.css('border-color', '#821328');
         $('.error-input').hide();
+        $('.error-name-input').hide();
+        $('.error-phone-input').hide();
         if (!product.val()) {
             product.next().show();
             product.css('border-color', 'red');
